@@ -23,13 +23,12 @@ defer client.Close()
 if lock, err := client.Lock(); err != nil {
 	log.Logger.Warnf("%d lock err %v", idx, err)
 		return
-} else if lock {
+	} else if lock {
 	log.Logger.Infof("%d locked", idx)
 		// time.Sleep mock the work which goroutine do
 		time.Sleep(time.Second)
-		client.UnLock()
-
-}
+		client.UnLock()	
+	}
 }
 ~~~
 
